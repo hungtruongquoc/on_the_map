@@ -11,8 +11,11 @@ class LocationInputViewController: UIViewController {
     
     var onCancel: (() -> Void)?
     
+    @IBOutlet weak var txtLocation: AutoClearableTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtLocation.delegate = AutoClearableTextFieldDelegate.shared
         // Do any additional setup after loading the view.
     }
 

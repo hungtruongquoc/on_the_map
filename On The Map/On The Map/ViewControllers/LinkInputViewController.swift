@@ -11,10 +11,13 @@ class LinkInputViewController: UIViewController {
 
     var onCancel: (() -> Void)?
 
+    @IBOutlet weak var txtLink: AutoClearableTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCancelButton()
         self.navigationItem.hidesBackButton = true
+        txtLink.delegate = AutoClearableTextFieldDelegate.shared
     }
 
     private func setupCancelButton() {

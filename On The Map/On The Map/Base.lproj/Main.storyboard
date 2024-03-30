@@ -145,7 +145,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter your location here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2St-iQ-lTK">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter your location here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2St-iQ-lTK" customClass="AutoClearableTextField" customModule="On_The_Map" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="346" width="393" height="251.33333333333337"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -208,6 +208,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="txtLocation" destination="2St-iQ-lTK" id="9Pg-4z-OJk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xaq-G8-Q0g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -270,7 +273,7 @@
                                     <action selector="btnSubmitTapped:" destination="Abx-CN-dqY" eventType="touchUpInside" id="HdS-GA-FQ4"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter a Link to Share Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJ8-Ex-Bm7">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter a Link to Share Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJ8-Ex-Bm7" customClass="AutoClearableTextField" customModule="On_The_Map" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="103" width="393" height="258.66666666666669"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -295,6 +298,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NES-VV-4OA"/>
+                    <connections>
+                        <outlet property="txtLink" destination="SJ8-Ex-Bm7" id="10i-zt-vah"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O1A-Qy-sGR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

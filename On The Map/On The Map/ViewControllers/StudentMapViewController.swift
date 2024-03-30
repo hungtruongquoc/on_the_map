@@ -7,11 +7,9 @@
 
 import UIKit
 
-class StudentMapViewController: UIViewController {
+class StudentMapViewController: BaseStudentListViewController {
 
     @IBOutlet weak var btnAddNewPin: UIBarButtonItem!
-    
-    var shouldReturnToList = false
     
     @IBAction func startAddNewPin(_ sender: UIBarButtonItem) {
         showOverwriteConfirmation(returningToTab: 0)
@@ -19,10 +17,8 @@ class StudentMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        shouldReloadList = true
     }
-    
 
     /*
     // MARK: - Navigation

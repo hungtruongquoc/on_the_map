@@ -1,31 +1,20 @@
 //
-//  StudentListViewController.swift
+//  BaseStudentListViewController.swift
 //  On The Map
 //
-//  Created by Hung Truong on 3/29/24.
+//  Created by Hung Truong on 3/30/24.
 //
 
 import UIKit
 
-class StudentListViewController: UITableViewController {
-
-    @IBOutlet weak var btnAddNewPin: UIBarButtonItem!
-    
+class BaseStudentListViewController: UIViewController {
     var shouldReturnToList = false
     var shouldReloadList = false
-    
     var studentFetcher: StudentFetcher?
-    
-    @IBAction func startAddNewPin(_ sender: UIBarButtonItem) {
-        showOverwriteConfirmation(returningToTab: 1)
-    }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         studentFetcher = StudentFetcher(viewController: self)
-        shouldReloadList = true
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,8 +25,6 @@ class StudentListViewController: UITableViewController {
             shouldReloadList = false
         }
     }
-    
-
     /*
     // MARK: - Navigation
 

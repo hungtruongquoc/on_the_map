@@ -15,12 +15,36 @@ struct Session: Codable {
     let expiration: String
 }
 
-struct StudentData: Codable {
-    let student: Student
+struct UserResponse: Codable {
+    let user: User
 }
 
-struct Student: Codable {
-    let firstName: String
+struct User: Codable {
     let lastName: String
-    // Add other relevant fields
+    let firstName: String
+    let key: String
+    let nickname: String
+    let email: UserEmail
+    let imageUrl: String?
+    
+    // Add other properties as needed...
+    
+    enum CodingKeys: String, CodingKey {
+        case lastName = "last_name"
+        case firstName = "first_name"
+        case key
+        case nickname
+        case email
+        case imageUrl = "_image_url"
+    }
+}
+
+struct UserEmail: Codable {
+    let address: String
+    let verified: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case address
+        case verified = "_verified"
+    }
 }

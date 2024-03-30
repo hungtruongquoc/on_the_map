@@ -52,7 +52,7 @@ class UdacityNetworkHandler {
         task.resume()
     }
     
-    func fetchUserInfo(userId: String, completion: @escaping (Student?, Error?) -> Void) {
+    func fetchUserInfo(userId: String, completion: @escaping (User?, Error?) -> Void) {
         let urlString = "https://onthemap-api.udacity.com/v1/users/\(userId)"
         guard let url = URL(string: urlString) else {
             completion(nil, NSError(domain: "InvalidURL", code: 1, userInfo: nil))
@@ -73,9 +73,9 @@ class UdacityNetworkHandler {
             let newData = data.subdata(in: range)
             do {
                 let decoder = JSONDecoder()
-                let userData = try decoder.decode(StudentData.self, from: newData)
+                let userData = try decoder.decode(UserResponse.self, from: newData)
                 DispatchQueue.main.async {
-                    completion(userData.student, nil)
+                    completion(userData.user, nil)
                 }
             } catch {
                 DispatchQueue.main.async {

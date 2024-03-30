@@ -28,7 +28,8 @@ class StudentFetcher {
                 activityIndicator.stopAnimating()
                 // This might involve calling a method on the view controller to update the UI
                 if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                    appDelegate.studentList = studentList
+                    appDelegate.setStudentList(studentList)
+                    print(appDelegate.getStudentList())
                 }
             }
         } catch {

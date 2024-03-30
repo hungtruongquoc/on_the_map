@@ -126,7 +126,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func storeLoginResponse(_ loginResponse: LoginResponse) {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.loginInfo = loginResponse
+            appDelegate.setLoginInfo(loginResponse)
         }
     }
 

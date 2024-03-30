@@ -10,9 +10,9 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var loginInfo: LoginResponse?
-    var studentList: StudentList?
-    var newStudentInfo: StudentInformation?
+    private var loginInfo: LoginResponse?
+    private var studentList: StudentList?
+    private var newStudentInfo: StudentInformation?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -37,6 +37,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize newStudentInfo with a new instance of StudentInformation
         newStudentInfo = StudentInformation(createdAt: "", firstName: "", lastName: "", latitude: 0.0, longitude: 0.0, mapString: "", mediaURL: "", objectId: "", uniqueKey: "", updatedAt: "")
         print("Initialized new student information")
+    }
+    
+    // MARK: - Accessor Methods for LoginInfo
+    func getLoginInfo() -> LoginResponse? {
+        return loginInfo
+    }
+    
+    func setLoginInfo(_ info: LoginResponse?) {
+        loginInfo = info
+    }
+
+    // MARK: - Accessor Methods for StudentList
+    
+    func getStudentList() -> StudentList? {
+        return studentList
+    }
+    
+    func setStudentList(_ list: StudentList?) {
+        studentList = list
+    }
+
+    // MARK: - Accessor Methods for NewStudentInfo
+    
+    func getNewStudentInfo() -> StudentInformation? {
+        return newStudentInfo
+    }
+    
+    func setNewStudentInfo(_ info: StudentInformation?) {
+        newStudentInfo = info
     }
 }
 

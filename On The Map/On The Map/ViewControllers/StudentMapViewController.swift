@@ -11,8 +11,10 @@ class StudentMapViewController: UIViewController {
 
     @IBOutlet weak var btnAddNewPin: UIBarButtonItem!
     
+    var shouldReturnToList = false
+    
     @IBAction func startAddNewPin(_ sender: UIBarButtonItem) {
-        showOverwriteConfirmation()
+        showOverwriteConfirmation(returningToTab: 0)
     }
     
     override func viewDidLoad() {

@@ -28,6 +28,10 @@
 		19AE7C6B2BB7C0E000E0DF98 /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C692BB7C0E000E0DF98 /* StudentListViewController.swift */; };
 		19AE7C6D2BB7C18200E0DF98 /* StudentMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C6C2BB7C18200E0DF98 /* StudentMapViewController.swift */; };
 		19AE7C6E2BB7C18200E0DF98 /* StudentMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C6C2BB7C18200E0DF98 /* StudentMapViewController.swift */; };
+		19AE7C702BB7CD3500E0DF98 /* LocationInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C6F2BB7CD3500E0DF98 /* LocationInputViewController.swift */; };
+		19AE7C712BB7CD3500E0DF98 /* LocationInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C6F2BB7CD3500E0DF98 /* LocationInputViewController.swift */; };
+		19AE7C732BB7D92F00E0DF98 /* LinkInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C722BB7D92F00E0DF98 /* LinkInputViewController.swift */; };
+		19AE7C742BB7D92F00E0DF98 /* LinkInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C722BB7D92F00E0DF98 /* LinkInputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +70,8 @@
 		19AE7C652BB7C06F00E0DF98 /* StudentListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListController.swift; sourceTree = "<group>"; };
 		19AE7C692BB7C0E000E0DF98 /* StudentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListViewController.swift; sourceTree = "<group>"; };
 		19AE7C6C2BB7C18200E0DF98 /* StudentMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMapViewController.swift; sourceTree = "<group>"; };
+		19AE7C6F2BB7CD3500E0DF98 /* LocationInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputViewController.swift; sourceTree = "<group>"; };
+		19AE7C722BB7D92F00E0DF98 /* LinkInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkInputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +191,8 @@
 			children = (
 				19AE7C692BB7C0E000E0DF98 /* StudentListViewController.swift */,
 				19AE7C6C2BB7C18200E0DF98 /* StudentMapViewController.swift */,
+				19AE7C6F2BB7CD3500E0DF98 /* LocationInputViewController.swift */,
+				19AE7C722BB7D92F00E0DF98 /* LinkInputViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -328,8 +336,10 @@
 				1978BF8E2BB7707F002580C7 /* AppDelegate.swift in Sources */,
 				19A050D82BB7AC0400EAE835 /* CustomLoginButton.swift in Sources */,
 				19AE7C6D2BB7C18200E0DF98 /* StudentMapViewController.swift in Sources */,
+				19AE7C702BB7CD3500E0DF98 /* LocationInputViewController.swift in Sources */,
 				1978BF902BB7707F002580C7 /* SceneDelegate.swift in Sources */,
 				19AE7C662BB7C06F00E0DF98 /* StudentListController.swift in Sources */,
+				19AE7C732BB7D92F00E0DF98 /* LinkInputViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,8 +349,10 @@
 			files = (
 				19AE7C6B2BB7C0E000E0DF98 /* StudentListViewController.swift in Sources */,
 				19AE7C6E2BB7C18200E0DF98 /* StudentMapViewController.swift in Sources */,
+				19AE7C712BB7CD3500E0DF98 /* LocationInputViewController.swift in Sources */,
 				19A050D92BB7AC0400EAE835 /* CustomLoginButton.swift in Sources */,
 				19AE7C672BB7C06F00E0DF98 /* StudentListController.swift in Sources */,
+				19AE7C742BB7D92F00E0DF98 /* LinkInputViewController.swift in Sources */,
 				19A050D52BB7A94600EAE835 /* LoginViewController.swift in Sources */,
 				1978BFA52BB77080002580C7 /* On_The_MapTests.swift in Sources */,
 			);

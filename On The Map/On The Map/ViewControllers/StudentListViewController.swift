@@ -11,8 +11,10 @@ class StudentListViewController: UITableViewController {
 
     @IBOutlet weak var btnAddNewPin: UIBarButtonItem!
     
+    var shouldReturnToList = false
+    
     @IBAction func startAddNewPin(_ sender: UIBarButtonItem) {
-        showOverwriteConfirmation()
+        showOverwriteConfirmation(returningToTab: 1)
     }
     
     

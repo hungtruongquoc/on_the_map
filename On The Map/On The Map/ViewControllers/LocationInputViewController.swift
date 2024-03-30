@@ -21,13 +21,13 @@ class LocationInputViewController: UIViewController {
     }
     
     // Assuming you've connected a segue from this view controller to LinkInputViewController in the storyboard
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "ToLinkInputSegue", // Use the actual segue identifier you've set in the storyboard
-               let linkInputVC = segue.destination as? LinkInputViewController {
-                // Pass the onCancel closure to the LinkInputViewController
-                linkInputVC.onCancel = self.onCancel
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToLinkInputSegue", // Use the actual segue identifier you've set in the storyboard
+           let linkInputVC = segue.destination as? LinkInputViewController {
+            // Pass the onCancel closure to the LinkInputViewController
+            linkInputVC.onCancel = self.onCancel
         }
+    }
     
 
     /*

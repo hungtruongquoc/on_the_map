@@ -21,6 +21,10 @@ class LinkInputViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
     }
 
+    @IBAction func btnSubmitTapped(_ sender: UIButton) {
+        cancelButtonTapped()
+    }
+    
     @objc func cancelButtonTapped() {
         onCancel?()
     }

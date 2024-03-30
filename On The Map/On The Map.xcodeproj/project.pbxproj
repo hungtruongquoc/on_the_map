@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1950951F2BB7B58800300DC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1978BF932BB7707F002580C7 /* Main.storyboard */; };
+		195095202BB7B58900300DC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1978BF932BB7707F002580C7 /* Main.storyboard */; };
 		1978BF8E2BB7707F002580C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978BF8D2BB7707F002580C7 /* AppDelegate.swift */; };
 		1978BF902BB7707F002580C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978BF8F2BB7707F002580C7 /* SceneDelegate.swift */; };
 		1978BF922BB7707F002580C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978BF912BB7707F002580C7 /* ViewController.swift */; };
@@ -16,6 +18,16 @@
 		1978BFA52BB77080002580C7 /* On_The_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978BFA42BB77080002580C7 /* On_The_MapTests.swift */; };
 		1978BFAF2BB77080002580C7 /* On_The_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978BFAE2BB77080002580C7 /* On_The_MapUITests.swift */; };
 		1978BFB12BB77080002580C7 /* On_The_MapUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978BFB02BB77080002580C7 /* On_The_MapUITestsLaunchTests.swift */; };
+		19A050D42BB7A93200EAE835 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A050D32BB7A93200EAE835 /* LoginViewController.swift */; };
+		19A050D52BB7A94600EAE835 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A050D32BB7A93200EAE835 /* LoginViewController.swift */; };
+		19A050D82BB7AC0400EAE835 /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A050D72BB7AC0400EAE835 /* CustomLoginButton.swift */; };
+		19A050D92BB7AC0400EAE835 /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A050D72BB7AC0400EAE835 /* CustomLoginButton.swift */; };
+		19AE7C662BB7C06F00E0DF98 /* StudentListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C652BB7C06F00E0DF98 /* StudentListController.swift */; };
+		19AE7C672BB7C06F00E0DF98 /* StudentListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C652BB7C06F00E0DF98 /* StudentListController.swift */; };
+		19AE7C6A2BB7C0E000E0DF98 /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C692BB7C0E000E0DF98 /* StudentListViewController.swift */; };
+		19AE7C6B2BB7C0E000E0DF98 /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C692BB7C0E000E0DF98 /* StudentListViewController.swift */; };
+		19AE7C6D2BB7C18200E0DF98 /* StudentMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C6C2BB7C18200E0DF98 /* StudentMapViewController.swift */; };
+		19AE7C6E2BB7C18200E0DF98 /* StudentMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C6C2BB7C18200E0DF98 /* StudentMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +61,11 @@
 		1978BFAA2BB77080002580C7 /* On The MapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On The MapUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1978BFAE2BB77080002580C7 /* On_The_MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_MapUITests.swift; sourceTree = "<group>"; };
 		1978BFB02BB77080002580C7 /* On_The_MapUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_MapUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		19A050D32BB7A93200EAE835 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		19A050D72BB7AC0400EAE835 /* CustomLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginButton.swift; sourceTree = "<group>"; };
+		19AE7C652BB7C06F00E0DF98 /* StudentListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListController.swift; sourceTree = "<group>"; };
+		19AE7C692BB7C0E000E0DF98 /* StudentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListViewController.swift; sourceTree = "<group>"; };
+		19AE7C6C2BB7C18200E0DF98 /* StudentMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +116,12 @@
 		1978BF8C2BB7707F002580C7 /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				19AE7C682BB7C0AE00E0DF98 /* ViewControllers */,
+				19AE7C642BB7BFBE00E0DF98 /* Extensions */,
+				19AE7C622BB7BC7600E0DF98 /* Networking */,
+				19A050D62BB7ABDF00EAE835 /* Components */,
+				19AE7C632BB7BC9D00E0DF98 /* Models */,
+				19A050D32BB7A93200EAE835 /* LoginViewController.swift */,
 				1978BF8D2BB7707F002580C7 /* AppDelegate.swift */,
 				1978BF8F2BB7707F002580C7 /* SceneDelegate.swift */,
 				1978BF912BB7707F002580C7 /* ViewController.swift */,
@@ -125,6 +148,45 @@
 				1978BFB02BB77080002580C7 /* On_The_MapUITestsLaunchTests.swift */,
 			);
 			path = "On The MapUITests";
+			sourceTree = "<group>";
+		};
+		19A050D62BB7ABDF00EAE835 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				19A050D72BB7AC0400EAE835 /* CustomLoginButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		19AE7C622BB7BC7600E0DF98 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		19AE7C632BB7BC9D00E0DF98 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		19AE7C642BB7BFBE00E0DF98 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				19AE7C652BB7C06F00E0DF98 /* StudentListController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		19AE7C682BB7C0AE00E0DF98 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				19AE7C692BB7C0E000E0DF98 /* StudentListViewController.swift */,
+				19AE7C6C2BB7C18200E0DF98 /* StudentMapViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +296,7 @@
 				1978BF972BB77080002580C7 /* Assets.xcassets in Resources */,
 				1978BF9A2BB77080002580C7 /* Base in Resources */,
 				1978BF952BB7707F002580C7 /* Base in Resources */,
+				1950951F2BB7B58800300DC8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				195095202BB7B58900300DC8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +322,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19AE7C6A2BB7C0E000E0DF98 /* StudentListViewController.swift in Sources */,
+				19A050D42BB7A93200EAE835 /* LoginViewController.swift in Sources */,
 				1978BF922BB7707F002580C7 /* ViewController.swift in Sources */,
 				1978BF8E2BB7707F002580C7 /* AppDelegate.swift in Sources */,
+				19A050D82BB7AC0400EAE835 /* CustomLoginButton.swift in Sources */,
+				19AE7C6D2BB7C18200E0DF98 /* StudentMapViewController.swift in Sources */,
 				1978BF902BB7707F002580C7 /* SceneDelegate.swift in Sources */,
+				19AE7C662BB7C06F00E0DF98 /* StudentListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +337,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19AE7C6B2BB7C0E000E0DF98 /* StudentListViewController.swift in Sources */,
+				19AE7C6E2BB7C18200E0DF98 /* StudentMapViewController.swift in Sources */,
+				19A050D92BB7AC0400EAE835 /* CustomLoginButton.swift in Sources */,
+				19AE7C672BB7C06F00E0DF98 /* StudentListController.swift in Sources */,
+				19A050D52BB7A94600EAE835 /* LoginViewController.swift in Sources */,
 				1978BFA52BB77080002580C7 /* On_The_MapTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

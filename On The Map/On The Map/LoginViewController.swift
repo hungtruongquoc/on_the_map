@@ -88,13 +88,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func loginButtonTapped(_ sender: UIButton) {
-        // Assuming login validation is successful
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
-            // Optionally set modalPresentationStyle if you want to cover the entire screen
-            mainTabBarController.modalPresentationStyle = .fullScreen
-            present(mainTabBarController, animated: true, completion: nil)
+        // Safely unwrap the optional text values
+        if let username = usernameTextField.text, let password = passwordTextField.text {
+            // Assuming login validation is successful
+            UdacityNetworkHandler.shared.login(username: username, password: password) { success, error in
+                DispatchQueue.main.async {
+                    if success {
+                        // Navigate to the next screen
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        if let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+                            mainTabBarController.modalPresentationStyle = .fullScreen
+                            self.present(mainTabBarController, animated: true, completion: nil)
+                        }
+                    } else if let error = error {
+                        // Show an error message
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        } else {
+            // Handle the case where username or password is nil (e.g., show an alert to the user)
+            print("Username or password is missing.")
         }
     }
 

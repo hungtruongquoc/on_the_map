@@ -79,6 +79,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
+    func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showLoadingAlert() {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func hideLoadingAlert(completion: (() -> Void)? = nil) {
+        dismiss(animated: true, completion: completion)
+    }
+    
     @objc func usernameTextFieldDidChange(textField: UITextField) {
         // Check if the text field is empty and update the login button's isEnabled property
         let isUsernameEmpty = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
@@ -88,28 +111,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func loginButtonTapped(_ sender: UIButton) {
-        // Safely unwrap the optional text values
-        if let username = usernameTextField.text, let password = passwordTextField.text {
-            // Assuming login validation is successful
-            UdacityNetworkHandler.shared.login(username: username, password: password) { success, error in
-                DispatchQueue.main.async {
-                    if success {
-                        // Navigate to the next screen
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        if let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
-                            mainTabBarController.modalPresentationStyle = .fullScreen
-                            self.present(mainTabBarController, animated: true, completion: nil)
-                        }
-                    } else if let error = error {
-                        // Show an error message
-                        print(error.localizedDescription)
+        guard let username = usernameTextField.text, let password = passwordTextField.text else {
+            // Handle the case where username or password is missing, perhaps show an alert
+            print("Username or password is missing.")
+            return
+        }
+        
+        UdacityNetworkHandler.shared.login(username: username, password: password) { success, loginResponse, error in
+            DispatchQueue.main.async {
+                if success, let loginResponse = loginResponse {
+                    // Navigate to the next screen
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    if let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+                        mainTabBarController.modalPresentationStyle = .fullScreen
+                        self.present(mainTabBarController, animated: true, completion: nil)
                     }
+                    
+                    // Store the login response in AppDelegate
+                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                        appDelegate.loginInfo = loginResponse
+                    }
+                } else {
+                    // Show an error message
+                    let errorMessage = error?.localizedDescription ?? "An unknown error occurred."
+                    self.showErrorAlert(message: errorMessage)
                 }
             }
-        } else {
-            // Handle the case where username or password is nil (e.g., show an alert to the user)
-            print("Username or password is missing.")
         }
     }
-
 }

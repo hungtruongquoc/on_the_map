@@ -18,24 +18,28 @@ class StudentFetcher {
         view.addSubview(activityIndicator)
     }
     
-    func fetchStudentsAndDisplay() {
-        activityIndicator.startAnimating()
-        StudentNetworkHandler.shared.fetchStudents { [weak self] studentList, error in
-            DispatchQueue.main.async {
-                self?.activityIndicator.stopAnimating()
-                
-                if let studentList = studentList {
-                    // Update UI here to display the students
-                    // This might involve calling a method on the view controller
-                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                        appDelegate.studentList = studentList
-                    }
-                } else if let error = error {
-                    self?.showErrorAlert(message: error.localizedDescription)
+    func fetchStudentsAndDisplay() async {
+        await activityIndicator.startAnimating()
+        
+        do {
+            let studentList = try await StudentNetworkHandler.shared.fetchStudents()
+            // Executing UI updates on the main thread using MainActor
+            await MainActor.run {
+                activityIndicator.stopAnimating()
+                // This might involve calling a method on the view controller to update the UI
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.studentList = studentList
                 }
+            }
+        } catch {
+            // Handling errors and ensuring UI updates are on the main thread
+            await MainActor.run {
+                activityIndicator.stopAnimating()
+                showErrorAlert(message: error.localizedDescription)
             }
         }
     }
+
     
     private func showErrorAlert(message: String) {
         guard let viewController = viewController else { return }

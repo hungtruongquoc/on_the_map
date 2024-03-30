@@ -16,11 +16,18 @@ class LocationInputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         txtLocation.delegate = AutoClearableTextFieldDelegate.shared
+        initializeStudentInfoForForm()
         // Do any additional setup after loading the view.
     }
 
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
         onCancel?()
+    }
+    
+    func initializeStudentInfoForForm() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.initializeNewStudentInfo()
+        // Now, appDelegate.newStudentInfo is a new instance and can be used to collect form data
     }
     
     // Assuming you've connected a segue from this view controller to LinkInputViewController in the storyboard

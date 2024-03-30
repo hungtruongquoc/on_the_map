@@ -111,31 +111,44 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func loginButtonTapped(_ sender: UIButton) {
+        Task {
+            await performLogin()
+        }
+    }
+    
+    func navigateToMainTabBarController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+            mainTabBarController.modalPresentationStyle = .fullScreen
+            present(mainTabBarController, animated: true, completion: nil)
+        }
+    }
+    
+    func storeLoginResponse(_ loginResponse: LoginResponse) {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.loginInfo = loginResponse
+        }
+    }
+
+
+    func performLogin() async {
         guard let username = usernameTextField.text, let password = passwordTextField.text else {
-            // Handle the case where username or password is missing, perhaps show an alert
-            print("Username or password is missing.")
+            showErrorAlert(message: "Username or password is missing.")
             return
         }
-        
-        UdacityNetworkHandler.shared.login(username: username, password: password) { success, loginResponse, error in
-            DispatchQueue.main.async {
-                if success, let loginResponse = loginResponse {
-                    // Navigate to the next screen
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    if let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
-                        mainTabBarController.modalPresentationStyle = .fullScreen
-                        self.present(mainTabBarController, animated: true, completion: nil)
-                    }
-                    
-                    // Store the login response in AppDelegate
-                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                        appDelegate.loginInfo = loginResponse
-                    }
-                } else {
-                    // Show an error message
-                    let errorMessage = error?.localizedDescription ?? "An unknown error occurred."
-                    self.showErrorAlert(message: errorMessage)
-                }
+
+        do {
+            let loginResponse = try await UdacityNetworkHandler.shared.login(username: username, password: password)
+            await MainActor.run {
+                navigateToMainTabBarController()
+                storeLoginResponse(loginResponse)
+            }
+            
+            let userInfo = try await UdacityNetworkHandler.shared.fetchUserInfo(userId: loginResponse.account.key)
+            print(userInfo) // Handle user info as needed
+        } catch {
+            await MainActor.run {
+                showErrorAlert(message: error.localizedDescription)
             }
         }
     }

@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var loginInfo: LoginResponse?
     var studentList: StudentList?
+    var newStudentInfo: StudentInformation?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -32,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    func initializeNewStudentInfo() {
+        // Initialize newStudentInfo with a new instance of StudentInformation
+        newStudentInfo = StudentInformation(createdAt: "", firstName: "", lastName: "", latitude: 0.0, longitude: 0.0, mapString: "", mediaURL: "", objectId: "", uniqueKey: "", updatedAt: "")
+        print("Initialized new student information")
+    }
 }
 

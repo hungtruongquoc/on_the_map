@@ -32,7 +32,10 @@ class StudentListViewController: UITableViewController {
         super.viewWillAppear(animated)
         // Check if the list should be reloaded
         if shouldReloadList {
-            studentFetcher?.fetchStudentsAndDisplay()
+            // Start a new task to call the async method
+            Task {
+                await studentFetcher?.fetchStudentsAndDisplay()
+            }
             shouldReloadList = false
         }
     }

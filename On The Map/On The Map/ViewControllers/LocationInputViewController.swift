@@ -7,15 +7,24 @@
 
 import UIKit
 
-class LocationInputViewController: UIViewController {
+class LocationInputViewController: UIViewController, UITextFieldDelegate {
     
     var onCancel: (() -> Void)?
     
     @IBOutlet weak var txtLocation: AutoClearableTextField!
     
+    @IBOutlet weak var btnFindOnMap: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtLocation.delegate = AutoClearableTextFieldDelegate.shared
+        btnFindOnMap.isEnabled = false
+        
+        // Set up the closure to enable/disable the button
+        AutoClearableTextFieldDelegate.shared.onTextChanged = { [weak self] text in
+            self?.btnFindOnMap.isEnabled = !(text?.isEmpty ?? true)
+        }
+        
         initializeStudentInfoForForm()
         // Do any additional setup after loading the view.
     }
@@ -36,6 +45,7 @@ class LocationInputViewController: UIViewController {
            let linkInputVC = segue.destination as? LinkInputViewController {
             // Pass the onCancel closure to the LinkInputViewController
             linkInputVC.onCancel = self.onCancel
+            linkInputVC.setCityStateInfo(txtLocation.text)
         }
     }
     

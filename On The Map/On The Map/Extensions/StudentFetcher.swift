@@ -1,66 +1,81 @@
 import Foundation
-import UIKit
 
 class StudentFetcher {
-    weak var viewController: UIViewController?
-    var activityIndicator: UIActivityIndicatorView
+    static let shared = StudentFetcher()
     
-    typealias StudentListUpdateHandler = (_ studentList: [StudentInformation]) -> Void
+    typealias StudentListUpdateHandler = (_ studentList: [StudentInformation], _ error: Error?) -> Void
     private var updateHandlers: [StudentListUpdateHandler] = []
+    private var isFetching = false
+    private var studentListCache: [StudentInformation]?
     
-    init(viewController: UIViewController) {
-        self.viewController = viewController
-        self.activityIndicator = UIActivityIndicatorView(style: .large)
-        self.setupActivityIndicator()
-    }
+    private init() {} // Private initializer to enforce singleton usage
     
-    private func setupActivityIndicator() {
-        guard let view = viewController?.view else { return }
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-    }
-    
-    private func notifySubscribers(with studentList: [StudentInformation]) {
-        for handler in updateHandlers {
-            handler(studentList)
+    private var shouldReloadList = true
+        
+    // Existing properties and methods...
+
+    func setShouldReloadList(_ shouldReload: Bool) {
+        shouldReloadList = shouldReload
+        if shouldReloadList {
+            Task {
+                await fetchStudents()
+            }
         }
     }
     
-    func fetchStudentsAndDisplay() async {
-        await activityIndicator.startAnimating()
+    func getShouldReloadList() -> Bool {
+        return shouldReloadList
+    }
+    
+    private func notifySubscribers(with studentList: [StudentInformation], error: Error? = nil) {
+        for handler in updateHandlers {
+            handler(studentList, error)
+        }
+    }
+    
+    func fetchStudents() async {
+        guard shouldReloadList && !isFetching else {
+            // If already fetching or no need to reload, notify with cached data if available
+            if let cachedList = studentListCache {
+                notifySubscribers(with: cachedList, error: nil)
+            }
+            return
+        }
         
+        isFetching = true
+
         do {
             let studentList = try await StudentNetworkHandler.shared.fetchStudents()
-            // Executing UI updates on the main thread using MainActor
             await MainActor.run {
-                activityIndicator.stopAnimating()
-                // This might involve calling a method on the view controller to update the UI
-                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                    appDelegate.setStudentList(studentList)
-                    print(appDelegate.getStudentList())
-                    // Notify all subscribers that the student list has been updated
-                    notifySubscribers(with: studentList.results)
-                }
+                self.studentListCache = studentList.results // Cache the fetched results
+                self.notifySubscribers(with: studentList.results, error: nil)
             }
         } catch {
-            // Handling errors and ensuring UI updates are on the main thread
             await MainActor.run {
-                activityIndicator.stopAnimating()
-                showErrorAlert(message: error.localizedDescription)
+                self.notifySubscribers(with: [], error: error)
             }
         }
-    }
-
-    
-    private func showErrorAlert(message: String) {
-        guard let viewController = viewController else { return }
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        viewController.present(alert, animated: true, completion: nil)
+        
+        shouldReloadList = false
+        isFetching = false
     }
     
     func subscribeToStudentListUpdated(handler: @escaping StudentListUpdateHandler) {
         updateHandlers.append(handler)
+    }
+    
+    func forceRefreshStudentList() {
+        studentListCache = nil // Invalidate cache
+        setShouldReloadList(true)
+    }
+    
+    func studentExists(withUniqueKey key: String) -> Bool {
+        // Check if the studentList is not nil and not empty
+        guard let list = studentListCache, !list.isEmpty else {
+            return false
+        }
+        
+        // Search for a student with the matching uniqueKey
+        return list.contains(where: { $0.uniqueKey == key })
     }
 }

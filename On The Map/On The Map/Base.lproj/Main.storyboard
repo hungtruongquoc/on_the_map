@@ -65,15 +65,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="ezv-Pb-heR">
-                        <barButtonItem key="leftBarButtonItem" image="mappin.circle" catalog="system" style="plain" id="ft4-rH-3th">
-                            <connections>
-                                <action selector="startAddNewPin:" destination="HOj-3H-QRK" id="KfL-6c-QPZ"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem image="mappin.circle" catalog="system" style="plain" id="ft4-rH-3th">
+                                <connections>
+                                    <action selector="startAddNewPin:" destination="HOj-3H-QRK" id="KfL-6c-QPZ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="power" catalog="system" style="plain" id="iWi-Z7-zao" customClass="LogoutButtonItem" customModule="On_The_Map" customModuleProvider="target"/>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" image="arrow.clockwise" catalog="system" id="7UM-K7-5ML"/>
                     </navigationItem>
                     <connections>
                         <outlet property="btnAddNewPin" destination="ft4-rH-3th" id="I5X-fw-CAv"/>
+                        <outlet property="btnLogout" destination="iWi-Z7-zao" id="E6b-tX-vq1"/>
                         <outlet property="mapStudent" destination="Y7j-0f-lmV" id="9TL-Yx-BTM"/>
                     </connections>
                 </viewController>
@@ -136,15 +140,19 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="DID-gd-tHC">
-                        <barButtonItem key="leftBarButtonItem" image="mappin.circle" catalog="system" style="plain" id="nq1-xd-ddQ">
-                            <connections>
-                                <action selector="startAddNewPin:" destination="Q4M-UJ-UgU" id="kqf-PD-SRc"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem image="mappin.circle" catalog="system" style="plain" id="nq1-xd-ddQ">
+                                <connections>
+                                    <action selector="startAddNewPin:" destination="Q4M-UJ-UgU" id="kqf-PD-SRc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="power" catalog="system" style="plain" id="ur6-Hg-fJx" customClass="LogoutButtonItem" customModule="On_The_Map" customModuleProvider="target"/>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" image="arrow.clockwise" catalog="system" id="ey9-o5-eWl"/>
                     </navigationItem>
                     <connections>
                         <outlet property="btnAddNewPin" destination="nq1-xd-ddQ" id="5gT-zJ-XFq"/>
+                        <outlet property="btnLogout" destination="ur6-Hg-fJx" id="vVO-w1-b6C"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1BG-tT-9pZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -188,14 +196,19 @@
                                 <rect key="frame" x="123" y="692.66666666666663" width="147" height="34.333333333333371"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Find on the map"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Find on the map"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Find on the map">
+                                    <backgroundConfiguration key="background" cornerRadius="16">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" name="AccentColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="Abx-CN-dqY" kind="show" identifier="ToLinkInputSegue" id="urf-Wa-lIP"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oIL-HQ-yxM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="oIL-HQ-yxM" firstAttribute="trailing" secondItem="3qX-MK-jmK" secondAttribute="trailing" id="0od-Rz-rEg"/>
                             <constraint firstItem="3qX-MK-jmK" firstAttribute="top" secondItem="cGt-Fi-pYA" secondAttribute="bottom" id="4rK-6q-vNc"/>
@@ -223,12 +236,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnFindOnMap" destination="T4c-rl-bch" id="4hd-UR-Ijf"/>
                         <outlet property="txtLocation" destination="2St-iQ-lTK" id="9Pg-4z-OJk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xaq-G8-Q0g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3844" y="18"/>
+            <point key="canvasLocation" x="3843.5114503816794" y="17.605633802816904"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OkO-TZ-RgT">
@@ -313,6 +327,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="NES-VV-4OA"/>
                     <connections>
+                        <outlet property="btnSubmit" destination="Ou8-7S-3tI" id="y0f-Av-G59"/>
+                        <outlet property="mapCityState" destination="EVh-Pr-1nb" id="95G-XH-7OV"/>
                         <outlet property="txtLink" destination="SJ8-Ex-Bm7" id="10i-zt-vah"/>
                     </connections>
                 </viewController>
@@ -327,11 +343,15 @@
         <image name="mappin" catalog="system" width="106" height="128"/>
         <image name="mappin.and.ellipse" catalog="system" width="110" height="128"/>
         <image name="mappin.circle" catalog="system" width="128" height="123"/>
+        <image name="power" catalog="system" width="127" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -7,49 +7,60 @@
 
 import UIKit
 
-class StudentListViewController: UITableViewController {
-
+class StudentListViewController: UITableViewController, AlertPresentable {
+    // Conforming to the protocol by providing an instance of UIActivityIndicatorView
+    var activityIndicator = UIActivityIndicatorView(style: .large)
+    
     @IBOutlet weak var btnAddNewPin: UIBarButtonItem!
+    @IBOutlet weak var btnLogout: LogoutButtonItem!
     
     var shouldReturnToList = false
-    var shouldReloadList = false
+
     private var students: [StudentInformation] = []
-    var studentFetcher: StudentFetcher?
     
     @IBAction func startAddNewPin(_ sender: UIBarButtonItem) {
-        showOverwriteConfirmation(returningToTab: 1)
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            showLocationInputScreen(shouldShowOverwriteConfirmation: appDelegate.currentUserHasPostedLocation, returningToTab: 1)
+        }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        studentFetcher = StudentFetcher(viewController: self)
-        shouldReloadList = true
-        // Do any additional setup after loading the view.
+        
+        StudentFetcher.shared.subscribeToStudentListUpdated { [weak self] studentList, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    // If there's an error, show an alert or handle the error appropriately
+                    self?.showErrorAlert(error.localizedDescription)
+                } else {
+                    // If there's no error, update the UI with the fetched student list
+                    self?.students = studentList
+                    self?.tableView.reloadData()
+                }
+                // Hide the activity indicator after handling the update or error
+                self?.hideActivityIndicator()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Check if the list should be reloaded
-        if shouldReloadList {
-            // Start a new task to call the async method
-            Task {
-                await studentFetcher?.fetchStudentsAndDisplay()
-            }
-            shouldReloadList = false
-        }
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-           let studentList = appDelegate.getStudentList() {
-            self.students = studentList.results
-            self.tableView.reloadData() // Reload table view with the new data
+        showActivityIndicator()
+        Task {
+            await StudentFetcher.shared.fetchStudents()
         }
     }
     
-    private func fetchAndDisplayStudents() {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-           let studentList = appDelegate.getStudentList() {
-            self.students = studentList.results
-            self.tableView.reloadData() // Reload table view with the new data
+    private func navigateToLoginScreen() {
+        // Implementation to navigate back to the login screen
+    }
+    
+    private func setupLogoutButton() {
+        btnLogout.onLogoutSuccess = { [weak self] in
+            // Handle successful logout, e.g., navigate to the login screen
+            print("Logout successful. Navigating to the login screen...")
+            self?.navigateToLoginScreen()
         }
     }
     
@@ -70,7 +81,7 @@ class StudentListViewController: UITableViewController {
 
         // Configure the cell...
         let student = students[indexPath.row]
-        cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
+        cell.textLabel?.text = "\(student.firstName) \(student.lastName), \(student.mapString)"
         cell.textLabel?.font = UIFont.systemFont(ofSize: 18)
 
         return cell

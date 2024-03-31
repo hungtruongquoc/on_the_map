@@ -8,27 +8,34 @@
 import UIKit
 import MapKit
 
-class StudentMapViewController: BaseStudentListViewController,MKMapViewDelegate {
-
+class StudentMapViewController: BaseStudentListViewController, MKMapViewDelegate {
     @IBOutlet weak var mapStudent: MKMapView!
     @IBOutlet weak var btnAddNewPin: UIBarButtonItem!
+    @IBOutlet weak var btnLogout: LogoutButtonItem!
     
     @IBAction func startAddNewPin(_ sender: UIBarButtonItem) {
-        showOverwriteConfirmation(returningToTab: 0)
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            showLocationInputScreen(shouldShowOverwriteConfirmation: appDelegate.currentUserHasPostedLocation, returningToTab: 0)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        shouldReloadList = true
         mapStudent.delegate = self
-        studentFetcher?.subscribeToStudentListUpdated{[weak self] studentList in
-            // Handle the updated student list, e.g., refresh UI components
-            self?.updateMapAnnotations(with: studentList)
+        
+        // Subscribe to student list updates using the shared StudentFetcher instance
+        StudentFetcher.shared.subscribeToStudentListUpdated { [weak self] studentList, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    // Handle the error, for example, by showing an alert
+                    self?.showErrorAlert(error.localizedDescription)
+                } else {
+                    // If there's no error, proceed to update the map annotations with the student list
+                    self?.updateMapAnnotations(with: studentList)
+                }
+                self?.hideActivityIndicator()
+            }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     private func updateMapAnnotations(with students: [StudentInformation]) {

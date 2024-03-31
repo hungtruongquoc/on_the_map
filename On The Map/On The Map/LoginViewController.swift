@@ -24,6 +24,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.addTarget(self, action: #selector(usernameTextFieldDidChange), for: .editingChanged)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resetTextFields()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         usernameTextField.becomeFirstResponder()
@@ -159,5 +164,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 showErrorAlert(message: error.localizedDescription)
             }
         }
+    }
+    
+    func resetTextFields() {
+        usernameTextField.text = ""
+        passwordTextField.text = ""
+        loginButton.isEnabled = false
     }
 }

@@ -48,3 +48,15 @@ struct UserEmail: Codable {
         case verified = "_verified"
     }
 }
+
+// Root structure for the delete session response
+struct DeleteSessionResponse: Codable {
+    let session: SessionDetail
+}
+
+// Details about the session that was deleted
+struct SessionDetail: Codable {
+    let id: String
+    let expiration: String
+}
+

@@ -78,15 +78,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Student List Handling
-
-    func studentExists(withUniqueKey key: String) -> Bool {
-        // Check if the studentList is not nil and not empty
-        guard let list = studentList, !list.results.isEmpty else {
+    
+    func refreshStudentData() {
+        // Only fetch new student data if shouldReloadList is true
+        StudentFetcher.shared.setShouldReloadList(true)
+    }
+    
+    func currentUserHasPostedLocation() -> Bool {
+        guard let userKey = userInfo?.key, !userKey.isEmpty else {
+            // No user key available, so assume no location posted
             return false
         }
         
-        // Search for a student with the matching uniqueKey
-        return list.results.contains(where: { $0.uniqueKey == key })
+        return StudentFetcher.shared.studentExists(withUniqueKey: userKey)
+    }
+    
+    func clearData() {
+        loginInfo = nil
+        studentList = nil
+        newStudentInfo = nil
+        userInfo = nil
     }
 }
 

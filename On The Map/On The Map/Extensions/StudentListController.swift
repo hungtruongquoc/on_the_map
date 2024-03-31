@@ -1,15 +1,13 @@
-//
-//  StudentListController.swift
-//  On The Map
-//
-//  Created by Hung Truong on 3/29/24.
-//
-
 import Foundation
 import UIKit
 
 extension UIViewController {
-    // Add a parameter to the function to determine the tab to return to.
+    func dismissToTab(withIndex tabIndex: Int) {
+        self.dismiss(animated: true) { [weak self] in
+            self?.tabBarController?.selectedIndex = tabIndex
+        }
+    }
+    
     func showOverwriteConfirmation(returningToTab tabIndex: Int) {
         let alertController = UIAlertController(
             title: "Overwrite Location",
@@ -17,24 +15,9 @@ extension UIViewController {
             preferredStyle: .alert
         )
 
-        let overwriteAction = UIAlertAction(title: "Overwrite", style: .default) { [unowned self] _ in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let locationInputNavController = storyboard.instantiateViewController(withIdentifier: "LocationInputNavigationController") as? UINavigationController,
-               let studyingLocationController = locationInputNavController.viewControllers.first as? LocationInputViewController {
-                
-                // Configure the closure
-                studyingLocationController.onCancel = { [weak self] in
-                    // Dismiss the navigation controller
-                    self?.dismiss(animated: true) {
-                        // Use the passed tabIndex to determine which tab to select after dismissal
-                        self?.tabBarController?.selectedIndex = tabIndex
-                    }
-                }
-                
-                // Present the navigation controller
-                locationInputNavController.modalPresentationStyle = .fullScreen
-                self.present(locationInputNavController, animated: true, completion: nil)
-            }
+        let overwriteAction = UIAlertAction(title: "Overwrite", style: .default) { [weak self] _ in
+            // Directly use the centralized method to present LocationInputViewController
+            self?.presentLocationInputViewController(returningToTab: tabIndex)
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -43,5 +26,30 @@ extension UIViewController {
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true)
+    }
+    
+    func presentLocationInputViewController(returningToTab tabIndex: Int) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let locationInputNavController = storyboard.instantiateViewController(withIdentifier: "LocationInputNavigationController") as? UINavigationController,
+           let locationInputVC = locationInputNavController.viewControllers.first as? LocationInputViewController {
+            
+            locationInputVC.onCancel = { [weak self] in
+                self?.dismissToTab(withIndex: tabIndex)
+            }
+            
+            locationInputNavController.modalPresentationStyle = .fullScreen
+            self.present(locationInputNavController, animated: true, completion: nil)
+        }
+    }
+    
+    // New method that accepts a closure returning a Bool
+    func showLocationInputScreen(shouldShowOverwriteConfirmation: () -> Bool, returningToTab tabIndex: Int) {
+        if shouldShowOverwriteConfirmation() {
+            // If the closure returns true, show the overwrite confirmation
+            showOverwriteConfirmation(returningToTab: tabIndex)
+        } else {
+            // If the closure returns false, directly present the LocationInputViewController
+            presentLocationInputViewController(returningToTab: tabIndex)
+        }
     }
 }

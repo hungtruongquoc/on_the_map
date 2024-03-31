@@ -23,3 +23,18 @@ struct StudentInformation: Codable {
 struct StudentList: Codable {
     let results: [StudentInformation]
 }
+
+struct StudentLocationRequest: Codable {
+    let uniqueKey: String
+    let firstName: String
+    let lastName: String
+    let mapString: String
+    let mediaURL: String
+    let latitude: Double
+    let longitude: Double
+}
+
+struct StudentLocationResponse: Codable {
+    let createdAt: String
+    let objectId: String
+}

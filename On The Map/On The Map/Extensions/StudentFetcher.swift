@@ -5,6 +5,9 @@ class StudentFetcher {
     weak var viewController: UIViewController?
     var activityIndicator: UIActivityIndicatorView
     
+    typealias StudentListUpdateHandler = (_ studentList: [StudentInformation]) -> Void
+    private var updateHandlers: [StudentListUpdateHandler] = []
+    
     init(viewController: UIViewController) {
         self.viewController = viewController
         self.activityIndicator = UIActivityIndicatorView(style: .large)
@@ -16,6 +19,12 @@ class StudentFetcher {
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)
+    }
+    
+    private func notifySubscribers(with studentList: [StudentInformation]) {
+        for handler in updateHandlers {
+            handler(studentList)
+        }
     }
     
     func fetchStudentsAndDisplay() async {
@@ -30,6 +39,8 @@ class StudentFetcher {
                 if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                     appDelegate.setStudentList(studentList)
                     print(appDelegate.getStudentList())
+                    // Notify all subscribers that the student list has been updated
+                    notifySubscribers(with: studentList.results)
                 }
             }
         } catch {
@@ -47,5 +58,9 @@ class StudentFetcher {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         viewController.present(alert, animated: true, completion: nil)
+    }
+    
+    func subscribeToStudentListUpdated(handler: @escaping StudentListUpdateHandler) {
+        updateHandlers.append(handler)
     }
 }

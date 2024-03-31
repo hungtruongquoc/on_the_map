@@ -7,8 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		194482002BB8F3C3005985D1 /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194481FF2BB8F3C3005985D1 /* URLHandler.swift */; };
+		194482012BB8F3C3005985D1 /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194481FF2BB8F3C3005985D1 /* URLHandler.swift */; };
 		1950951F2BB7B58800300DC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1978BF932BB7707F002580C7 /* Main.storyboard */; };
 		195095202BB7B58900300DC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1978BF932BB7707F002580C7 /* Main.storyboard */; };
+		195D17902BB91CF3002DE457 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195D178F2BB91CF3002DE457 /* AlertPresentable.swift */; };
+		195D17912BB91CF3002DE457 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195D178F2BB91CF3002DE457 /* AlertPresentable.swift */; };
+		195D17922BB947CF002DE457 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978BF8D2BB7707F002580C7 /* AppDelegate.swift */; };
+		195D17942BB95456002DE457 /* LogoutButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195D17932BB95456002DE457 /* LogoutButtonItem.swift */; };
+		195D17952BB95456002DE457 /* LogoutButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195D17932BB95456002DE457 /* LogoutButtonItem.swift */; };
+		195D17972BB962D1002DE457 /* ForceLoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195D17962BB962D1002DE457 /* ForceLoginPage.swift */; };
+		195D17982BB962D1002DE457 /* ForceLoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195D17962BB962D1002DE457 /* ForceLoginPage.swift */; };
+		1974E6D32BB86B65009E840F /* NetworkingUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1974E6D22BB86B65009E840F /* NetworkingUtility.swift */; };
+		1974E6D42BB86B65009E840F /* NetworkingUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1974E6D22BB86B65009E840F /* NetworkingUtility.swift */; };
+		1974E6D62BB8B1C2009E840F /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1974E6D52BB8B1C2009E840F /* StudentTableViewCell.swift */; };
+		1974E6D72BB8B1C2009E840F /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1974E6D52BB8B1C2009E840F /* StudentTableViewCell.swift */; };
 		1978BF8E2BB7707F002580C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978BF8D2BB7707F002580C7 /* AppDelegate.swift */; };
 		1978BF902BB7707F002580C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978BF8F2BB7707F002580C7 /* SceneDelegate.swift */; };
 		1978BF922BB7707F002580C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978BF912BB7707F002580C7 /* ViewController.swift */; };
@@ -32,6 +45,20 @@
 		19AE7C712BB7CD3500E0DF98 /* LocationInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C6F2BB7CD3500E0DF98 /* LocationInputViewController.swift */; };
 		19AE7C732BB7D92F00E0DF98 /* LinkInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C722BB7D92F00E0DF98 /* LinkInputViewController.swift */; };
 		19AE7C742BB7D92F00E0DF98 /* LinkInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C722BB7D92F00E0DF98 /* LinkInputViewController.swift */; };
+		19AE7C762BB7E77E00E0DF98 /* UdacityNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C752BB7E77E00E0DF98 /* UdacityNetworkHandler.swift */; };
+		19AE7C772BB7E77E00E0DF98 /* UdacityNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C752BB7E77E00E0DF98 /* UdacityNetworkHandler.swift */; };
+		19AE7C792BB7EE4500E0DF98 /* UdacityObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C782BB7EE4500E0DF98 /* UdacityObjects.swift */; };
+		19AE7C7A2BB7EE4500E0DF98 /* UdacityObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C782BB7EE4500E0DF98 /* UdacityObjects.swift */; };
+		19AE7C7C2BB835F700E0DF98 /* StudentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C7B2BB835F700E0DF98 /* StudentModels.swift */; };
+		19AE7C7D2BB835F700E0DF98 /* StudentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C7B2BB835F700E0DF98 /* StudentModels.swift */; };
+		19AE7C7F2BB8364C00E0DF98 /* StudentNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C7E2BB8364C00E0DF98 /* StudentNetworkHandler.swift */; };
+		19AE7C802BB8364C00E0DF98 /* StudentNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C7E2BB8364C00E0DF98 /* StudentNetworkHandler.swift */; };
+		19AE7C822BB83DE700E0DF98 /* BaseStudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C812BB83DE700E0DF98 /* BaseStudentListViewController.swift */; };
+		19AE7C832BB83DE700E0DF98 /* BaseStudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C812BB83DE700E0DF98 /* BaseStudentListViewController.swift */; };
+		19AE7C852BB8426800E0DF98 /* StudentFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C842BB8426800E0DF98 /* StudentFetcher.swift */; };
+		19AE7C862BB8426800E0DF98 /* StudentFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C842BB8426800E0DF98 /* StudentFetcher.swift */; };
+		19AE7C882BB855D400E0DF98 /* AutoClearableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C872BB855D400E0DF98 /* AutoClearableTextField.swift */; };
+		19AE7C892BB855D400E0DF98 /* AutoClearableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AE7C872BB855D400E0DF98 /* AutoClearableTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +79,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		194481FF2BB8F3C3005985D1 /* URLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHandler.swift; sourceTree = "<group>"; };
+		195D178F2BB91CF3002DE457 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
+		195D17932BB95456002DE457 /* LogoutButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButtonItem.swift; sourceTree = "<group>"; };
+		195D17962BB962D1002DE457 /* ForceLoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceLoginPage.swift; sourceTree = "<group>"; };
+		1974E6D22BB86B65009E840F /* NetworkingUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingUtility.swift; sourceTree = "<group>"; };
+		1974E6D52BB8B1C2009E840F /* StudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
 		1978BF8A2BB7707F002580C7 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1978BF8D2BB7707F002580C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1978BF8F2BB7707F002580C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +105,13 @@
 		19AE7C6C2BB7C18200E0DF98 /* StudentMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMapViewController.swift; sourceTree = "<group>"; };
 		19AE7C6F2BB7CD3500E0DF98 /* LocationInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputViewController.swift; sourceTree = "<group>"; };
 		19AE7C722BB7D92F00E0DF98 /* LinkInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkInputViewController.swift; sourceTree = "<group>"; };
+		19AE7C752BB7E77E00E0DF98 /* UdacityNetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityNetworkHandler.swift; sourceTree = "<group>"; };
+		19AE7C782BB7EE4500E0DF98 /* UdacityObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityObjects.swift; sourceTree = "<group>"; };
+		19AE7C7B2BB835F700E0DF98 /* StudentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModels.swift; sourceTree = "<group>"; };
+		19AE7C7E2BB8364C00E0DF98 /* StudentNetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentNetworkHandler.swift; sourceTree = "<group>"; };
+		19AE7C812BB83DE700E0DF98 /* BaseStudentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStudentListViewController.swift; sourceTree = "<group>"; };
+		19AE7C842BB8426800E0DF98 /* StudentFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentFetcher.swift; sourceTree = "<group>"; };
+		19AE7C872BB855D400E0DF98 /* AutoClearableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoClearableTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +200,9 @@
 			isa = PBXGroup;
 			children = (
 				19A050D72BB7AC0400EAE835 /* CustomLoginButton.swift */,
+				19AE7C872BB855D400E0DF98 /* AutoClearableTextField.swift */,
+				1974E6D52BB8B1C2009E840F /* StudentTableViewCell.swift */,
+				195D17932BB95456002DE457 /* LogoutButtonItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -167,6 +210,9 @@
 		19AE7C622BB7BC7600E0DF98 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				19AE7C752BB7E77E00E0DF98 /* UdacityNetworkHandler.swift */,
+				19AE7C7E2BB8364C00E0DF98 /* StudentNetworkHandler.swift */,
+				1974E6D22BB86B65009E840F /* NetworkingUtility.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -174,6 +220,8 @@
 		19AE7C632BB7BC9D00E0DF98 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				19AE7C782BB7EE4500E0DF98 /* UdacityObjects.swift */,
+				19AE7C7B2BB835F700E0DF98 /* StudentModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,6 +230,10 @@
 			isa = PBXGroup;
 			children = (
 				19AE7C652BB7C06F00E0DF98 /* StudentListController.swift */,
+				19AE7C842BB8426800E0DF98 /* StudentFetcher.swift */,
+				194481FF2BB8F3C3005985D1 /* URLHandler.swift */,
+				195D178F2BB91CF3002DE457 /* AlertPresentable.swift */,
+				195D17962BB962D1002DE457 /* ForceLoginPage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -193,6 +245,7 @@
 				19AE7C6C2BB7C18200E0DF98 /* StudentMapViewController.swift */,
 				19AE7C6F2BB7CD3500E0DF98 /* LocationInputViewController.swift */,
 				19AE7C722BB7D92F00E0DF98 /* LinkInputViewController.swift */,
+				19AE7C812BB83DE700E0DF98 /* BaseStudentListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -330,15 +383,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19AE7C792BB7EE4500E0DF98 /* UdacityObjects.swift in Sources */,
+				19AE7C762BB7E77E00E0DF98 /* UdacityNetworkHandler.swift in Sources */,
 				19AE7C6A2BB7C0E000E0DF98 /* StudentListViewController.swift in Sources */,
 				19A050D42BB7A93200EAE835 /* LoginViewController.swift in Sources */,
+				1974E6D62BB8B1C2009E840F /* StudentTableViewCell.swift in Sources */,
 				1978BF922BB7707F002580C7 /* ViewController.swift in Sources */,
 				1978BF8E2BB7707F002580C7 /* AppDelegate.swift in Sources */,
+				195D17902BB91CF3002DE457 /* AlertPresentable.swift in Sources */,
+				19AE7C7C2BB835F700E0DF98 /* StudentModels.swift in Sources */,
+				194482002BB8F3C3005985D1 /* URLHandler.swift in Sources */,
+				19AE7C852BB8426800E0DF98 /* StudentFetcher.swift in Sources */,
+				19AE7C882BB855D400E0DF98 /* AutoClearableTextField.swift in Sources */,
 				19A050D82BB7AC0400EAE835 /* CustomLoginButton.swift in Sources */,
 				19AE7C6D2BB7C18200E0DF98 /* StudentMapViewController.swift in Sources */,
+				195D17942BB95456002DE457 /* LogoutButtonItem.swift in Sources */,
 				19AE7C702BB7CD3500E0DF98 /* LocationInputViewController.swift in Sources */,
 				1978BF902BB7707F002580C7 /* SceneDelegate.swift in Sources */,
+				19AE7C822BB83DE700E0DF98 /* BaseStudentListViewController.swift in Sources */,
+				19AE7C7F2BB8364C00E0DF98 /* StudentNetworkHandler.swift in Sources */,
 				19AE7C662BB7C06F00E0DF98 /* StudentListController.swift in Sources */,
+				1974E6D32BB86B65009E840F /* NetworkingUtility.swift in Sources */,
+				195D17972BB962D1002DE457 /* ForceLoginPage.swift in Sources */,
 				19AE7C732BB7D92F00E0DF98 /* LinkInputViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,13 +413,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19AE7C7D2BB835F700E0DF98 /* StudentModels.swift in Sources */,
+				19AE7C892BB855D400E0DF98 /* AutoClearableTextField.swift in Sources */,
+				19AE7C862BB8426800E0DF98 /* StudentFetcher.swift in Sources */,
+				19AE7C832BB83DE700E0DF98 /* BaseStudentListViewController.swift in Sources */,
 				19AE7C6B2BB7C0E000E0DF98 /* StudentListViewController.swift in Sources */,
 				19AE7C6E2BB7C18200E0DF98 /* StudentMapViewController.swift in Sources */,
+				19AE7C772BB7E77E00E0DF98 /* UdacityNetworkHandler.swift in Sources */,
 				19AE7C712BB7CD3500E0DF98 /* LocationInputViewController.swift in Sources */,
+				195D17982BB962D1002DE457 /* ForceLoginPage.swift in Sources */,
+				195D17922BB947CF002DE457 /* AppDelegate.swift in Sources */,
+				195D17952BB95456002DE457 /* LogoutButtonItem.swift in Sources */,
+				19AE7C802BB8364C00E0DF98 /* StudentNetworkHandler.swift in Sources */,
 				19A050D92BB7AC0400EAE835 /* CustomLoginButton.swift in Sources */,
 				19AE7C672BB7C06F00E0DF98 /* StudentListController.swift in Sources */,
+				19AE7C7A2BB7EE4500E0DF98 /* UdacityObjects.swift in Sources */,
 				19AE7C742BB7D92F00E0DF98 /* LinkInputViewController.swift in Sources */,
+				195D17912BB91CF3002DE457 /* AlertPresentable.swift in Sources */,
+				1974E6D72BB8B1C2009E840F /* StudentTableViewCell.swift in Sources */,
+				194482012BB8F3C3005985D1 /* URLHandler.swift in Sources */,
 				19A050D52BB7A94600EAE835 /* LoginViewController.swift in Sources */,
+				1974E6D42BB86B65009E840F /* NetworkingUtility.swift in Sources */,
 				1978BFA52BB77080002580C7 /* On_The_MapTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

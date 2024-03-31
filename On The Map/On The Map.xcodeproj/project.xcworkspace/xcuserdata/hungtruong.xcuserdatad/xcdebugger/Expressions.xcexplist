@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "AutoClearableTextFieldDelegate.textFieldDidBeginEditing(_:):AutoClearableTextField.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "clearOnceTextField">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

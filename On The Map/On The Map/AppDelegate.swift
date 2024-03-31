@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var loginInfo: LoginResponse?
     private var studentList: StudentList?
     private var newStudentInfo: StudentInformation?
+    private var userInfo: User?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -66,6 +67,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setNewStudentInfo(_ info: StudentInformation?) {
         newStudentInfo = info
+    }
+    
+    func getUserInfo() -> User? {
+        return userInfo
+    }
+    
+    func setUserInfo(_ user: User) {
+        userInfo = user
+    }
+    
+    // MARK: - Student List Handling
+
+    func studentExists(withUniqueKey key: String) -> Bool {
+        // Check if the studentList is not nil and not empty
+        guard let list = studentList, !list.results.isEmpty else {
+            return false
+        }
+        
+        // Search for a student with the matching uniqueKey
+        return list.results.contains(where: { $0.uniqueKey == key })
     }
 }
 

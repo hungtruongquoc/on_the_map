@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import MapKit
 
-class StudentMapViewController: BaseStudentListViewController {
+class StudentMapViewController: BaseStudentListViewController,MKMapViewDelegate {
 
+    @IBOutlet weak var mapStudent: MKMapView!
     @IBOutlet weak var btnAddNewPin: UIBarButtonItem!
     
     @IBAction func startAddNewPin(_ sender: UIBarButtonItem) {
@@ -18,6 +20,7 @@ class StudentMapViewController: BaseStudentListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldReloadList = true
+        mapStudent.delegate = self
     }
 
     /*

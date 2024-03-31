@@ -71,9 +71,15 @@ class StudentListViewController: UITableViewController {
         // Configure the cell...
         let student = students[indexPath.row]
         cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
-        cell.detailTextLabel?.text = student.mediaURL
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 18)
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let student = students[indexPath.row]
+        openStudentURL(student.mediaURL)
     }
 
 

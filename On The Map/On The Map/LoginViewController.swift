@@ -129,6 +129,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             appDelegate.setLoginInfo(loginResponse)
         }
     }
+    
+    func storeUserResponse(_ user: User) {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.setUserInfo(user)
+        }
+    }
 
 
     func performLogin() async {
@@ -145,7 +151,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
             
             let userInfo = try await UdacityNetworkHandler.shared.fetchUserInfo(userId: loginResponse.account.key)
+            print("User information: ")
             print(userInfo) // Handle user info as needed
+            storeUserResponse(userInfo)
         } catch {
             await MainActor.run {
                 showErrorAlert(message: error.localizedDescription)

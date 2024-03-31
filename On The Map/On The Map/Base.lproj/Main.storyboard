@@ -74,6 +74,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnAddNewPin" destination="ft4-rH-3th" id="I5X-fw-CAv"/>
+                        <outlet property="mapStudent" destination="Y7j-0f-lmV" id="9TL-Yx-BTM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3o-H8-tYO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -107,13 +108,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentCell" id="ACe-lo-ZxV">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentCell" rowHeight="42" id="ACe-lo-ZxV" customClass="StudentTableViewCell" customModule="On_The_Map" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="42"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ACe-lo-ZxV" id="UOc-Rt-K2J">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="42"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DXr-iJ-BFa">
+                                            <rect key="frame" x="12" y="10.333333333333371" width="16.333333333333332" height="19.66666666666665"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DXr-iJ-BFa" firstAttribute="leading" secondItem="UOc-Rt-K2J" secondAttribute="leading" id="bW7-gO-9dL"/>
+                                        <constraint firstItem="DXr-iJ-BFa" firstAttribute="centerY" secondItem="UOc-Rt-K2J" secondAttribute="centerY" id="cWa-ag-Htq"/>
+                                    </constraints>
+                                    <edgeInsets key="layoutMargins" top="8" left="24" bottom="8" right="8"/>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES"/>
+                                </accessibility>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -135,7 +149,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1BG-tT-9pZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1740" y="-427"/>
+            <point key="canvasLocation" x="1739.6946564885495" y="-427.46478873239437"/>
         </scene>
         <!--Location Input View Controller-->
         <scene sceneID="92d-9R-bTq">
@@ -310,6 +324,7 @@
     <resources>
         <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="mappin" catalog="system" width="106" height="128"/>
         <image name="mappin.and.ellipse" catalog="system" width="110" height="128"/>
         <image name="mappin.circle" catalog="system" width="128" height="123"/>
         <namedColor name="AccentColor">
